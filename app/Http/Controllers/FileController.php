@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\GetFileResource;
 use App\Models\File;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ class FileController extends Controller
             return response()->json(['message' => 'File already exists']);
         }
 
-        $path = $file->store('files');
+        $path = $file->store('files', 'public');
 
         File::create([
             'name' => $file->getClientOriginalName(),
@@ -46,7 +47,7 @@ class FileController extends Controller
             return response()->json(['error' => 'Fayllarni ko‘rishga ruxsat yo‘q'], 403);
         }
 
-        return response()->json($files);
+        return response()->json(GetFileResource::collection($files));
     }
 
     public function destroy($id)

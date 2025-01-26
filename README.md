@@ -16,7 +16,8 @@
 6. php artisan migrate
 7. php artisan db:seed --class=RolePermissionSeeder
 8. php artisan jwt:secret
-9. php artisan serve
+9. php artisan storage:link
+10. php artisan serve
 
 ## ROLE ADMIN
 admin@example.com

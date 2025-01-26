@@ -21,4 +21,9 @@ class File extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function getFullPathAttribute()
+    {
+        return asset('storage/' . $this->path);
+    }
+
 }
